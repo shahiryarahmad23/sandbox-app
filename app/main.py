@@ -33,7 +33,7 @@ def get_notes(db : Session = Depends(get_db)):
 
 
 @app.get("/notes/{note_id}",response_model=NoteRead,status_code=200)
-def get_id(note_id : int , db : Session = Depends(get_db)):
+def get_id_notes(note_id : int , db : Session = Depends(get_db)):
     
     stmt = select(Note).where(Note.id == note_id)
     result = db.execute(stmt).scalar_one_or_none()
